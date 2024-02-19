@@ -1,0 +1,25 @@
+spring:
+  security:
+    user:
+      name: user
+      password: 123
+    login:
+      page: /login
+    thymeleaf:
+      enabled: false
+
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/xe
+    username: SYSTEM
+    password: 1234
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  
