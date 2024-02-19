@@ -36,10 +36,10 @@ public class PaqueteController {
 
     @PutMapping("/user/{userId}/{folio}")
     public ResponseEntity<String> updatePaquete(@PathVariable Long userId, @PathVariable Long folio, @RequestBody PaqueteUser updatedPaquete) {
-        String sql = "UPDATE PAQUETE_USER SET FECHA_PQ = ?, REMITENTE_PQ = ?, DESTINATARIO_PQ = ?, DIRECCION_DESTINATARIO_PQ = ?, TEL_DESTINATARIO_PQ = ?, PESO_PQ = ?, OBSERVACIONES_PQ = ?, COSTO_ENVIO_PQ = ? WHERE FOLIO_PQ = ?";
+        String sql = "UPDATE PAQUETE_USER SET REMITENTE_PQ = ?, DESTINATARIO_PQ = ?, DIRECCION_DESTINATARIO_PQ = ?, TEL_DESTINATARIO_PQ = ?, PESO_PQ = ?, OBSERVACIONES_PQ = ?, COSTO_ENVIO_PQ = ? WHERE FOLIO_PQ = ?";
 
         try {
-            jdbcTemplate.update(sql, updatedPaquete.getFechaPq(), updatedPaquete.getRemitentePq(), updatedPaquete.getDestinatarioPq(), updatedPaquete.getDireccionDestinatarioPq(), updatedPaquete.getTelDestinatarioPq(), updatedPaquete.getPesoPq(), updatedPaquete.getObservacionesPq(), updatedPaquete.getCostoEnvioPq(), folio);
+            jdbcTemplate.update(sql, updatedPaquete.getRemitentePq(), updatedPaquete.getDestinatarioPq(), updatedPaquete.getDireccionDestinatarioPq(), updatedPaquete.getTelDestinatarioPq(), updatedPaquete.getPesoPq(), updatedPaquete.getObservacionesPq(), updatedPaquete.getCostoEnvioPq(), folio);
             return ResponseEntity.ok("Paquete updated successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating paquete");
